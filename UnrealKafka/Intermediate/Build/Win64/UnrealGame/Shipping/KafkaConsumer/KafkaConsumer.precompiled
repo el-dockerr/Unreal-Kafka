@@ -1,6 +1,0 @@
-{
-	"OutputFiles": [
-		"..\\..\\..\\x64\\UnrealGame\\Shipping\\KafkaConsumer\\Module.KafkaConsumer.cpp.obj",
-		"..\\..\\..\\x64\\UnrealGame\\Shipping\\KafkaConsumer\\KafkaConsumer.cpp.obj"
-	]
-}

@@ -1,7 +1,0 @@
-{
-	"OutputFiles": [
-		"..\\..\\..\\x64\\UnrealGame\\Shipping\\EasyKafka\\Module.EasyKafka.cpp.obj",
-		"..\\..\\..\\x64\\UnrealGame\\Shipping\\EasyKafka\\EasyKafka.cpp.obj",
-		"..\\..\\..\\x64\\UnrealGame\\Shipping\\EasyKafka\\EasyKafkaSubsystem.cpp.obj"
-	]
-}
