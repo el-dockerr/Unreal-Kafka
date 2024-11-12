@@ -1,0 +1,11 @@
+{
+	"BuildId": "33043543",
+	"Modules": 
+	{
+		"EasyJsonParser": "UnrealEditor-EasyJsonParser.dll",
+		"EasyKafka": "UnrealEditor-EasyKafka.dll",
+		"KafkaAdmin": "UnrealEditor-KafkaAdmin.dll",
+		"KafkaConsumer": "UnrealEditor-KafkaConsumer.dll",
+		"KafkaProducer": "UnrealEditor-KafkaProducer.dll"
+	}
+}

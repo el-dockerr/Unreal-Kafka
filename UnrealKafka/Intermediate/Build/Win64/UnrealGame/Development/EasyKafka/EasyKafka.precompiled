@@ -1,0 +1,7 @@
+{
+	"OutputFiles": [
+		"..\\..\\..\\x64\\UnrealGame\\Development\\EasyKafka\\Module.EasyKafka.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\EasyKafka\\EasyKafka.cpp.obj",
+		"..\\..\\..\\x64\\UnrealGame\\Development\\EasyKafka\\EasyKafkaSubsystem.cpp.obj"
+	]
+}
