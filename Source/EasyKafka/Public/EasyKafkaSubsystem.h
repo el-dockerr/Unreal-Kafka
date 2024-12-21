@@ -37,12 +37,21 @@ public:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCommit, const FConsumerCallback&, CommitCallback);
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNewMessage,const TArray<FConsumerRecord>&, Messages);
 
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Create Consumer", ToolTip = "Create a kafka Consumer. Call it once.", Keywords = "EasyKafka sample test testing"), Category = "EasyKafka|Consumer")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Create Simple Consumer", ToolTip = "Create a kafka Consumer with user/password. Call it once.", Keywords = "EasyKafka sample test testing"), Category = "EasyKafka|Consumer")
 		 void CreateConsumerDefault(FString Servers, FString UserName, FString Password, EKafkaLogLevel KafkaLogLevel = EKafkaLogLevel::ERR);
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Create Consumer", ToolTip = "Create a kafka Consumer. Call it once.", Keywords = "EasyKafka sample test testing"), Category = "EasyKafka|Consumer")
 		 void CreateConsumer(FString Servers, FString UserName, FString Password, TMap<EKafkaConsumerConfig, FString> Configuration, EKafkaLogLevel KafkaLogLevel = EKafkaLogLevel::ERR);
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Create Consumer", ToolTip = "Create a kafka Consumer. Call it once.", Keywords = "EasyKafka sample test testing"), Category = "EasyKafka|Consumer")
 		 void CreateConsumerStr(FString Servers, FString UserName, FString Password, TMap<FString, FString> Configuration, EKafkaLogLevel KafkaLogLevel = EKafkaLogLevel::ERR);
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Create Consumer with SSL PEM", ToolTip = "Create a kafka Consumer with SSL and PEM certificates. Call it once.", Keywords = "EasyKafka sample test testing"), Category = "EasyKafka|Consumer")
+		 void CreateConsumerSslPem(
+			 FString Servers,
+			 FString CertificateChain,
+			 FString KeyStoreKey,
+			 FString KeyPassword,
+			 FString TruststoreCertificate,
+			 TMap<FString, FString> Configuration,
+			 EKafkaLogLevel KafkaLogLevel = EKafkaLogLevel::ERR);
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Subscribe", ToolTip = "Subscribe to topics", Keywords = "EasyKafka sample test testing"), Category = "EasyKafka|Consumer")
 		 void Subscribe(TArray<FString> Topics, int Timeout=1000 );
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Unsubscribe", ToolTip ="Unsubscribe from all topics.", Keywords = "EasyKafka sample test testing"), Category = "EasyKafka|Consumer")

@@ -168,6 +168,39 @@ void FKafkaConsumerModule::CreateConsumer(FString Servers, FString UserName, FSt
 	FKafkaConsumerModule::CreateConsumer(Servers, UserName, Password, Configurations, KafkaLogLevel);
 }
 
+void FKafkaConsumerModule::CreateConsumer(FString Servers, FString CertificateChain, FString KeyStoreKey, FString KeyPassword, FString TruststoreCertificate, const TMap<FString, FString>& Configuration, int KafkaLogLevel)
+{
+	StopConsuming();
+
+	if (KafkaConsumerProps)
+		delete KafkaConsumerProps;
+	if (Consumer)
+		delete Consumer;
+
+
+	KafkaConsumerProps = new kafka::Properties({
+		   {"bootstrap.servers",  std::string(TCHAR_TO_UTF8(*Servers))},
+		   {"enable.auto.commit", {"true"}},
+		   {"log_level",  std::to_string(KafkaLogLevel)}
+		});
+
+	KafkaConsumerProps->put("security.protocol", "SSL");
+	KafkaConsumerProps->put("ssl.keystore.type", "PEM");
+	KafkaConsumerProps->put("ssl.keystore.certificate.chain", std::string(TCHAR_TO_UTF8(*CertificateChain)));
+	KafkaConsumerProps->put("ssl.keystore.key", std::string(TCHAR_TO_UTF8(*KeyStoreKey)));
+	KafkaConsumerProps->put("ssl.key.password", std::string(TCHAR_TO_UTF8(*KeyPassword)));
+	KafkaConsumerProps->put("ssl.truststore.type", "PEM");
+	KafkaConsumerProps->put("ssl.truststore.certificates", std::string(TCHAR_TO_UTF8(*TruststoreCertificate)));
+
+
+	for (const TPair<FString, FString>& pair : Configuration)
+	{
+		KafkaConsumerProps->put(std::string(TCHAR_TO_UTF8(*pair.Key)), std::string(TCHAR_TO_UTF8(*pair.Value)));
+	}
+
+	Consumer = new kafka::clients::KafkaConsumer(*KafkaConsumerProps, kafka::clients::KafkaClient::EventsPollingOption::Manual);
+}
+
 void FKafkaConsumerModule::CreateConsumer(FString Servers, FString UserName, FString Password, const TMap<FString, FString>& Configuration, int KafkaLogLevel)
 {
 	

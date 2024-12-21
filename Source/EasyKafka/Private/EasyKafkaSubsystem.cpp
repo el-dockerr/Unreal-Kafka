@@ -26,6 +26,13 @@ void UEasyKafkaSubsystem::CreateConsumer(FString Servers, FString UserName, FStr
 	EasyKafka->GetConsumer()->CreateConsumer(Servers, UserName, Password, Configuration, (int)KafkaLogLevel);
 }
 
+void UEasyKafkaSubsystem::CreateConsumerSslPem(FString Servers, FString CertificateChain, FString KeyStoreKey, FString KeyPassword, 
+	FString TruststoreCertificate, TMap<FString, FString> Configuration, EKafkaLogLevel KafkaLogLevel)
+{
+	if (EasyKafka->GetConsumer())
+		EasyKafka->GetConsumer()->CreateConsumer(Servers, CertificateChain, KeyStoreKey, KeyPassword, TruststoreCertificate, Configuration, (int)KafkaLogLevel);
+}
+
 void UEasyKafkaSubsystem::CreateConsumerStr(FString Servers, FString UserName, FString Password, TMap<FString, FString> Configuration, EKafkaLogLevel KafkaLogLevel)
 {
 	if(EasyKafka->GetConsumer())

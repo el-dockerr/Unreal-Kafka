@@ -115,6 +115,21 @@ public:
 	*/
 	void CreateConsumer(FString Servers, FString UserName, FString Password, const TMap<FString, FString>& Configuration = {}, int KafkaLogLevel=5);
 
+
+	/**
+	* Create a kafka Consumer with SSL / PEM.
+	*
+	* @param Servers Container whose values are summed.
+	* @param CertificateChain ssl keystore certificate chain.
+	* @param KeyStoreKey ssl keystore key.
+	* @param KeyPassword password for keystore key.
+	* @param TruststoreCertificate ssl truststore certificate(s).
+	* @param Configuration List of String,String map.
+	* @param KafkaLogLevel Int 7 to 0
+	* @warning Call it once only.
+	*/
+	void CreateConsumer(FString Servers, FString CertificateChain, FString KeyStoreKey, FString KeyPassword, FString TruststoreCertificate, const TMap<FString, FString>& Configuration, int KafkaLogLevel = 5);
+
 	/**
 	* Subscribe to topics.
 	*
